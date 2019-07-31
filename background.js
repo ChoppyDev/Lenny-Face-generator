@@ -1,7 +1,16 @@
 chrome.contextMenus.create({
-    title: "Insert Lenny Face", 
-    contexts:["all"], 
-    onclick:  handleContextMenuClick
+    title: "Insert Lenny Face ( ͡° ͜ʖ ͡°)", 
+    contexts:["editable"], 
+    onclick: function(info, tab) 
+        {
+            chrome.tabs.sendRequest(
+                tab.id, 
+                {
+                    "insertLennyFace": true
+                }, 
+                function(response){ }
+            )
+        }
   });
 
   function searchRedditForUrl(url) {
